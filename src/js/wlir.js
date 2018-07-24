@@ -17,7 +17,6 @@ wlirApp.controller("wlirInit", ["$scope","$rootScope","$http","$location","$rout
     $scope.login = "Please Login";
     var api_root = ("//" + config.api.url + ":" + config.api.port + "/");
 
-
     $http({
       method: "GET",
       url: api_root
