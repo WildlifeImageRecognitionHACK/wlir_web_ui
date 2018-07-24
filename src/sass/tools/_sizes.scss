@@ -1,0 +1,18 @@
+$gutter: 2rem;
+
+// Grid
+$grid: (
+  "sm": 380px,
+  "md": 768px,
+  "lg": 1024px,
+  "xl": 1650px,
+  "short": 550px
+);
+
+$grid-margin: 3%;
+
+$nav_comics_width    : 23.5%;
+$nav_other_height    : 23.5vh;
+$nav_other_width     : 6%;
+$nav_topbar_height   : 6vh;
+$nav_topbar_width    : $nav_other_width; 

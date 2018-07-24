@@ -1,0 +1,46 @@
+<!doctype HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="Microsoft - Wildlife Image Recognition">
+
+    <title>Microsoft - Wildlife Image Recognition</title>
+
+    <!-- Rubik Typeface from CDN -->
+    <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+
+    <!-- jQuery from CDN -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
+
+    <!-- Angular from CDN -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular-route.js"></script>
+
+    <!-- Locally saved third party scripts -->
+    <script src="/js/thirdparty.min.js"></script>
+
+    <!-- Site Controller -->
+    <script src="/js/wlir.min.js"></script>
+
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/wlir.css">
+
+  </head>
+  <body ng-app="wlirApp" ng-controller="wlirInit">
+    <div class="wrapper">
+      <header>
+        <h1 class="h6">Wildlife Image Recognition</h1>
+      </header>
+      <div class="ng-view content"></div>
+      <footer>
+        <div class="copyright">© Copyright Microsoft 2018, all rights reserved.</div>
+      </footer>
+    </div>
+  </body>
+</html>
