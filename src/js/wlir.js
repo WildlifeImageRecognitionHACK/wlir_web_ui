@@ -1,6 +1,5 @@
 var wlirAppCache         = "?0";
 var wlirApp              = angular.module("wlirApp",["ngRoute"]);
-var wlirApiURL           = "//localhost/";
 
 wlirApp.config(function($routeProvider,$locationProvider,$scope) {
     $routeProvider
@@ -15,7 +14,7 @@ wlirApp.controller("wlirInit", ["$scope","$rootScope","$http","$location","$rout
   function($scope,$rootScope,$http,$location,$route) {
 
     $scope.login = "Please Login";
-    var api_root = ("//" + config.api.url + ":" + config.api.port + "/");
+    var api_root = ("//" + config.api.url + ":" + config.api.port + config.api.folder);
 
     $http({
       method: "GET",

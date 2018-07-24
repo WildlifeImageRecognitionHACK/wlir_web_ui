@@ -1,6 +1,7 @@
 var config = {
   "api" : {
     "url" : "localhost",
-    "port" : 80
+    "port" : 8080,
+    "folder" : "/api/"
   }
 }
