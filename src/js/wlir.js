@@ -14,16 +14,14 @@ wlirApp.controller("wlirInit", ["$scope","$rootScope","$http","$location","$rout
   function($scope,$rootScope,$http,$location,$route) {
 
     $scope.login = "Please Login";
-    var api_root = ("//" + config.api.url + ":" + config.api.port + config.api.folder);
 
     $http({
       method: "GET",
-      url: api_root
+      url: "//localhost:8080/api/"
     }).then(function successCallback(response) {
       $scope.api_connect = "We're connected!";
     }, function errorCallback(response) {
       $scope.api_connect = "We couldn't connect!";
       console.log("API Error!");
     });
-
 }]);
