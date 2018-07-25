@@ -21,11 +21,15 @@ wlirApp.controller("wlirInit", ["$scope","$rootScope","$http","$location","$rout
     }).then(
       function successCallback(response) {
         $scope.api_connect = "We're connected!";
+        console.log("full response...");
+        console.log(response);
       }, 
       function errorCallback(response) {
         $scope.api_connect = "We couldn't connect!";
         console.log("request url: " + response.config.url);
-        console.log(response.status);
+        console.log("status code: " + response.status);
+        console.log("full response...");
+        console.log(response);
       }
     );
 }]);
