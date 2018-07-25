@@ -3,15 +3,12 @@ Web UI for MS Wildlife Image Recognition HACK App
 
 Follow these steps to compile the Web UI
 
-1. Install NodeJS (8.11.3 or later)
-https://nodejs.org/en/
+1. Install NodeJS (8.11.3 or later) (https://nodejs.org/en/)
 
-2. From command line, install Grunt
-https://gruntjs.com/getting-started
+2. From command line, install Grunt (https://gruntjs.com/getting-started)
 > npm install -g grunt-cli
 
-3. From the command line, install Sass
-https://sass-lang.com/install
+3. From the command line, install Sass (https://sass-lang.com/install) 
 > npm install -g sass
 NOTE: This will use "Dart Sass" as opposed to Node Sass or Ruby Sass
 
