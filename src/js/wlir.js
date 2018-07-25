@@ -1,10 +1,16 @@
-var wlirAppCache         = "?0";
-var wlirApp              = angular.module("wlirApp",["ngRoute"]);
+var wlirAppCache        = "?0";
+var wlirApp             = angular.module("wlirApp",["ngRoute"]);
+var wlirAPI             = "//localhost:8080/api/";
+var wlirImage           = "./img/bunny.png";
 
 wlirApp.config(function($routeProvider,$locationProvider,$scope) {
     $routeProvider
       .when("/", {
           templateUrl : "views/home.html" + wlirAppCache,
+          pageState : "home"
+      })
+      .when("/review/", {
+          templateUrl : "views/review.html" + wlirAppCache,
           pageState : "home"
       }); 
     $locationProvider.hashPrefix("");
@@ -14,10 +20,11 @@ wlirApp.controller("wlirInit", ["$scope","$rootScope","$http","$location","$rout
   function($scope,$rootScope,$http,$location,$route) {
 
     $scope.login = "Please Login";
+    $scope.displayed_image = wlirImage;
 
     $http({
       method: "GET",
-      url: "//localhost:8080/api/"
+      url: "wlirAPI"
     }).then(
       function successCallback(response) {
         $scope.api_connect = "We're connected!";
@@ -32,4 +39,7 @@ wlirApp.controller("wlirInit", ["$scope","$rootScope","$http","$location","$rout
         console.log(response);
       }
     );
+
+
+
 }]);

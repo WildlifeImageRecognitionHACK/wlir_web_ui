@@ -7,9 +7,9 @@ module.exports = function(grunt) {
       target: {
         files: [{
           expand: true,
-          cwd: 'src',
-          src: ['main.scss'],
-          dest: ['dist/css'],
+          cwd: 'src/sass',
+          src: ['wlir.scss'],
+          dest: 'dist/css',
           ext: '.css'
         }]
       }
@@ -52,10 +52,10 @@ module.exports = function(grunt) {
         files: ['src/img/**/*', 'src_micro/**/img/**/*'],
         tasks: ['sync']
       },
-      // scss: {
-      //   files: ['src/sass/**/*.scss', 'src_micro/**/sass/**/*.scss'],
-      //   tasks: ['sass']
-      // },
+      scss: {
+        files: ['src/sass/**/*.scss', 'src_micro/**/sass/**/*.scss'],
+        tasks: ['dart-sass']
+      },
       dev: {
         files: ['src/js/**/*.js','src_micro/**/js/**/*.js'],
         tasks: ['uglify']

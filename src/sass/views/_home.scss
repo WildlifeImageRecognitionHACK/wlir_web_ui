@@ -1,4 +1,58 @@
+body {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
 .wrapper {
   background-color: $white;
   color: $black;
+
+  min-height: 100%;
+  min-width: 100%;
+  position: relative;
+  background: $white;
+  text-align: center;
+
+  .bg_plant_left,
+  .bg_plant_right,
+  .bg_plant_top,
+  .bg_lion {
+    position: absolute;
+    display: block;
+    background-size: contain;
+    pointer-events: none;
+  }
+
+  .bg_plant_left {
+    background-image: url(../img/plant_1.svg);
+    background-position: left center;
+    width: 50vw;
+    height: 60vh;
+    left: 0;
+    top: 20vh;
+  }
+  .bg_plant_right {
+    background-image: url(../img/plant_2.svg);
+    background-position: right center;
+    width: 50vw;
+    height: 60vh;
+    right: 0;
+    top: 20vh;
+  }
+  .bg_plant_top {
+    background-image: url(../img/plant_3.svg);
+    background-position: 25% -20vh;
+    width: 100vw;
+    height: 50vh;
+    top: 0;
+    left: 0;
+  }
+  .bg_lion {
+    background-image: url(../img/lion.svg);
+    width: 60vw;
+    height: 60vh;
+    margin: 10vh 20vw;
+  }
 }
+
