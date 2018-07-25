@@ -18,10 +18,14 @@ wlirApp.controller("wlirInit", ["$scope","$rootScope","$http","$location","$rout
     $http({
       method: "GET",
       url: "//localhost:8080/api/"
-    }).then(function successCallback(response) {
-      $scope.api_connect = "We're connected!";
-    }, function errorCallback(response) {
-      $scope.api_connect = "We couldn't connect!";
-      console.log("API Error!");
-    });
+    }).then(
+      function successCallback(response) {
+        $scope.api_connect = "We're connected!";
+      }, 
+      function errorCallback(response) {
+        $scope.api_connect = "We couldn't connect!";
+        console.log("request url: " + response.config.url);
+        console.log(response.status);
+      }
+    );
 }]);

@@ -1,17 +1,17 @@
 module.exports = function(grunt) {
 
   require('load-grunt-tasks')(grunt); // npm install --save-dev load-grunt-tasks
-
+  
   grunt.initConfig({
-    sass: {
-      dist: {
-        options: {
-          style: 'expanded',
-          noCache: true
-          },
-        files: {
-          'dist/css/wlir.css' : 'src/sass/main.scss'
-        }
+    'dart-sass': {
+      target: {
+        files: [{
+          expand: true,
+          cwd: 'src',
+          src: ['main.scss'],
+          dest: ['dist/css'],
+          ext: '.css'
+        }]
       }
     },
     sync: {
@@ -52,10 +52,10 @@ module.exports = function(grunt) {
         files: ['src/img/**/*', 'src_micro/**/img/**/*'],
         tasks: ['sync']
       },
-      scss: {
-        files: ['src/sass/**/*.scss', 'src_micro/**/sass/**/*.scss'],
-        tasks: ['sass']
-      },
+      // scss: {
+      //   files: ['src/sass/**/*.scss', 'src_micro/**/sass/**/*.scss'],
+      //   tasks: ['sass']
+      // },
       dev: {
         files: ['src/js/**/*.js','src_micro/**/js/**/*.js'],
         tasks: ['uglify']
@@ -83,7 +83,7 @@ module.exports = function(grunt) {
   });
            
   // > grunt build  - compiles project
-  grunt.registerTask('build', ['sass', 'sync', 'uglify']);    
+  grunt.registerTask('build', ['dart-sass', 'sync', 'uglify']);    
   // > grunt start  - compiles project, runs localhost server, re-builds project when files change
   grunt.registerTask('start', ['build', 'connect', 'watch']);
   // > grunt        - compiles project (defining default task)
