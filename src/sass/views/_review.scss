@@ -39,6 +39,8 @@
       color: $gray-3;
       border-radius: 5px;
       font-size: 14px;
+      transition: .3s;
+      cursor: pointer;
     }
     input {
       position: absolute;
@@ -50,5 +52,69 @@
       }
     }
   }
+  .review__confirm {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin: 0 0 1vh;
+    button {
+      width: 560px;
+      height: 60px;
+      line-height: 60px;
+      font-size: 14px;
+      color: $white;
+      background: $green_primary;
+      cursor: pointer;
+      border: 0;
+      border-radius: 5px;
+    }
+  }
 }
+.too_small {
+  display: none;
+}
+@include breakpoint('md','max','width') { 
+  .review .review__classification {
+    width: auto;
+    padding: 0 1vw;
+    li {
+      display: block;
+      margin-bottom: 5px;
+    }
+    label {
+      display: block;
+      width: 100%;
+    }
+  }
+  .review .review__confirm {
+    margin: 0;
+    button {
+      width: 100%;
+    }
+  }
 
+}
+@include breakpoint('hmd','max','height') { 
+  .review {
+    .review__image {
+      height: 40vh;
+    }
+  }
+}
+@include breakpoint('hsm','max','height') { 
+  .review {
+    .review__image {
+      height: 30vh;
+    }
+  }
+}
+@include breakpoint('hxs','max','height') {
+  .review {
+    display: none;
+  }
+  .too_small {
+    display: block;
+    margin-top: 30vh;
+  }
+} 

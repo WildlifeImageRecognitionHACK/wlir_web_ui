@@ -2,8 +2,8 @@
   <div class="review__image">
     <img ng-show="show_image" ng-src="{{ displayed_image }}" />
   </div>
-  <div class="review__classification">
-    <h6 class="review__classification--header">Classification</h6>
+  <div class="review__classification" ng-class="">
+    <p class="review__classification--header">Classification</p>
     <ul>
       <li>
         <input type="radio" name="image_classification" id="is_human"  />
@@ -20,6 +20,10 @@
     </ul>
   </div>
   <div class="review__confirm">
+    <p>Please do not share these images.<br />Doing so could put wild animals at risk.</p>
     <button>Confirm</button>
   </div>
+</div>
+<div class="too_small">
+  <p>The screen size of your device is too small to use this application.</p>
 </div>
