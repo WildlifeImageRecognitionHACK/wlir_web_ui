@@ -1,20 +1,25 @@
 <div class="review">
   <div class="review__image">
-    <img ng-src="{{ displayed_image }}" />
+    <img ng-show="show_image" ng-src="{{ displayed_image }}" />
   </div>
-  <ul class="review__selection">
-    <li>
-      <input type="radio" name="image_classification" id="is_human"  />
-      <label for="is_human">Human</label>
-    </li>
-    <li>
-      <input type="radio" name="image_classification" id="is_animal"  />
-      <label for="is_animal">Animal</label>
-    </li>
-    <li>
-      <input type="radio" name="image_classification" id="is_neither"  />
-      <label for="is_neither">Neither</label>
-    </li>
-  </ul>
-  <button class="review__confirm">Confirm</button>
+  <div class="review__classification">
+    <h6 class="review__classification--header">Classification</h6>
+    <ul>
+      <li>
+        <input type="radio" name="image_classification" id="is_human"  />
+        <label for="is_human">Human</label>
+      </li>
+      <li>
+        <input type="radio" name="image_classification" id="is_animal"  />
+        <label for="is_animal">Animal</label>
+      </li>
+      <li>
+        <input type="radio" name="image_classification" id="is_neither"  />
+        <label for="is_neither">Neither</label>
+      </li>
+    </ul>
+  </div>
+  <div class="review__confirm">
+    <button>Confirm</button>
+  </div>
 </div>

@@ -1,8 +1,54 @@
 .review {
-  .review__image {}
-  .review__selection {
-    input {}
-    label {}
-    input:checked {}
+  .review__image {
+    background-color: $green_light;
+    background-image: url(../img/loading.gif);
+    background-position: center;
+    padding: 1vh 1vw;
+    height: 50vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    img {
+      display: block;
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+  .review__classification {
+    width: 560px;
+    margin: 0 auto;
+    .review__classification--header {
+      text-align: left;
+      margin-bottom: 10px;
+    }
+    ul {
+      list-style: none;
+    }
+    li {
+      display: inline-block;
+      position: relative;
+    }
+    label {
+      display: inline-block;
+      line-height: 40px;
+      height: 40px;
+      width: 180px;
+      background: $gray-C;
+      color: $gray-3;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    input {
+      position: absolute;
+      opacity: 0;
+      &:checked {}
+      &:checked + label {
+        color: $green_dark;
+        background: $green_light;
+      }
+    }
   }
 }
+

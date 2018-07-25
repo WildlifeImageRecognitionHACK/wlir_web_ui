@@ -21,6 +21,7 @@ wlirApp.controller("wlirInit", ["$scope","$rootScope","$http","$location","$rout
 
     $scope.login = "Please Login";
     $scope.displayed_image = wlirImage;
+    $scope.show_image = false;
 
     $http({
       method: "GET",
@@ -39,7 +40,4 @@ wlirApp.controller("wlirInit", ["$scope","$rootScope","$http","$location","$rout
         console.log(response);
       }
     );
-
-
-
 }]);
