@@ -25,7 +25,7 @@ wlirApp.controller("wlirInit", ["$scope","$rootScope","$http","$location","$rout
 
     $http({
       method: "GET",
-      url: "wlirAPI"
+      url: wlirAPI
     }).then(
       function successCallback(response) {
         $scope.api_connect = "We're connected!";
