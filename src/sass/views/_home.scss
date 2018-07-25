@@ -3,7 +3,17 @@ body {
   width: 100vw;
   overflow: hidden;
 }
-
+footer {
+  padding: 5px 10px;
+  text-align: right;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+.copyright {
+  font-size: 1.4rem;
+}
 .wrapper {
   background-color: $white;
   color: $black;
