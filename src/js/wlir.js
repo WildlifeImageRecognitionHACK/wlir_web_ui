@@ -1,8 +1,9 @@
 var wlirAppCache        = "?1"; // increment this value if views are being cached
 var wlirApp             = angular.module("wlirApp",["ngRoute"]);
-var wlirAPI             = "//localhost:8080/api/";
+var wlirAPI             = "/images/";
 
 wlirApp.config(function($routeProvider,$locationProvider,$scope) {
+    // This sets up the two views in the single page app for login (/) and image viewer (/review/)
     $routeProvider
       .when("/", {
           templateUrl : "views/home.html" + wlirAppCache,
@@ -12,16 +13,21 @@ wlirApp.config(function($routeProvider,$locationProvider,$scope) {
           templateUrl : "views/review.html" + wlirAppCache,
           pageState : "home"
       }); 
+    // This would add text to the required /#/ portion of the single page app URL. We use an empty string to not add this text.
     $locationProvider.hashPrefix("");
 });
 
 wlirApp.controller("wlirInit", ["$scope","$rootScope","$http","$location","$route", 
   function($scope,$rootScope,$http,$location,$route) {
 
+    // this sets the display image to null, the current class (human, animal, neither) to none selected, and the show image state to false. 
+    // the "loading" graphic is on a layer under the image, so any time show_image is false, the user will see the loading graphic.
+
     $scope.current_image = "";
-    $scope.current_class = "0";
+    $scope.current_class = "";
     $scope.show_image = false;
 
+    // This function will submit a request to the API to get an image for the user to 
     $scope.getNewImage = function () {
       // TODO: send OAUTH user token with the image request
       $http({
@@ -56,9 +62,9 @@ wlirApp.controller("wlirInit", ["$scope","$rootScope","$http","$location","$rout
     };
 
     $scope.onConfirmClick = function () {
-      // sets the loading state
+      // Sets the loading state.
       $scope.show_image = false;
-      $scope.current_class = "-1";
+      $scope.current_class = "";
 
       // TODO: send image ID and OAUTH user token in request
       $http({
@@ -81,7 +87,7 @@ wlirApp.controller("wlirInit", ["$scope","$rootScope","$http","$location","$rout
     // TODO: 
     // if (login == true) {
     // $location.path("/#/review/");
-    // $scope.getNewImage();
+    $scope.getNewImage();
     // } else {
     // $location.path("/");
     // }
