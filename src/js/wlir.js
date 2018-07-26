@@ -29,7 +29,7 @@ wlirApp.controller("wlirInit", ["$scope","$rootScope","$http","$location","$rout
     $scope.show_image = false;
 
     // The success screen was used for the demo. This stage could be removed to speed up user experience. 
-    $scope.show_success = true;
+    $scope.show_success = false;
 
     // This function will submit a request to the API to get an image for the user to 
     $scope.getNewImage = function () {
