@@ -1,4 +1,4 @@
-var wlirAppCache        = "?2"; // increment this value if views are being cached
+var wlirAppCache        = "?4"; // increment this value if views are being cached
 var wlirApp             = angular.module("wlirApp",["ngRoute"]);
 var wlirAPIs            = {
                             "get_image" : "/images/",
@@ -68,19 +68,24 @@ wlirApp.controller("wlirInit", ["$scope","$rootScope","$http","$location","$rout
     $scope.onConfirmClick = function () {
       // Sets the loading state.
       $scope.show_image = false;
+      $scope.postdata = {
+        "imageId" : $scope.current_id,
+        "newLabel" :  $scope.current_label,
+        "originalLabel" :  $scope.original_label
+      };
+      console.log("sending data...");
+      console.log($scope.postdata);
 
       // Send image ID and OAUTH user token in request.
       $http({
         method: "POST",
         url: wlirAPIs.post_label,
-        data: { 
-          "imageId" : $scope.current_id,
-          "newLabel" :  $scope.current_label,
-          "originalLabel" :  $scope.original_label
-        }
+        data: $scope.postdata
       }).then(
         function successCallback(response) {
           // If post is successful, automatically loads a new image
+          console.log("post successful...");
+          console.log(response);
           $scope.getNewImage();
         }, 
         function errorCallback(response) {
