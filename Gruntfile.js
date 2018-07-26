@@ -38,7 +38,8 @@ module.exports = function(grunt) {
         files: {
           'dist/js/wlir.min.js' : 'src/js/**/*.js',
           'dist/js/thirdparty.min.js' : [
-            'node_modules/lodash/lodash.min.js'
+            'node_modules/lodash/lodash.min.js',
+            'node_modules/angular-google-auth2/angular-google-auth2.js'
           ]
         }
       }

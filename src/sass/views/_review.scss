@@ -50,6 +50,9 @@
         color: $green_dark;
         background: $green_light;
       }
+      &:focus + label {
+        outline: $blue_light auto 5px;
+      }
     }
   }
   .review__confirm {
@@ -68,6 +71,9 @@
       cursor: pointer;
       border: 0;
       border-radius: 5px;
+      &:focus {
+        outline: $blue_light auto 5px;
+      }
     }
   }
 }
