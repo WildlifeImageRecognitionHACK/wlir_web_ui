@@ -24,10 +24,12 @@ wlirApp.controller("wlirInit", ["$scope","$rootScope","$http","$location","$rout
 
     // this sets the display image to null, the current class (human, animal, neither) to none selected, and the show image state to false. 
     // the "loading" graphic is on a layer under the image, so any time show_image is false, the user will see the loading graphic.
-
     $scope.current_image = "";
     $scope.current_class = "";
     $scope.show_image = false;
+
+    // The success screen was used for the demo. This stage could be removed to speed up user experience. 
+    $scope.show_success = true;
 
     // This function will submit a request to the API to get an image for the user to 
     $scope.getNewImage = function () {
@@ -87,7 +89,7 @@ wlirApp.controller("wlirInit", ["$scope","$rootScope","$http","$location","$rout
           // If post is successful, automatically loads a new image
           console.log("post successful...");
           console.log(response);
-          $scope.getNewImage();
+          $scope.show_success = true;
         }, 
         function errorCallback(response) {
           // TODO: remove console.log for production
@@ -97,6 +99,11 @@ wlirApp.controller("wlirInit", ["$scope","$rootScope","$http","$location","$rout
           console.log(response);
         }
       );
+    }
+
+    $scope.onNextClick = function () {
+      $scope.show_success = false;
+      $scope.getNewImage();
     }
 
     // TODO: Login Handling.

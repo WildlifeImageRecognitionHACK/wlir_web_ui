@@ -77,6 +77,37 @@
     }
   }
 }
+
+.review__success {
+  position: absolute;
+  display: block;
+  background-color: $black-70;
+  color: $white;
+  font-size: 16px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  p {
+    margin-top: 40vh;
+  }
+  button {
+    width: 95vw;
+    height: 60px;
+    line-height: 60px;
+    font-size: 14px;
+    color: $white;
+    background: $blue_primary;
+    cursor: pointer;
+    border: 0;
+    border-radius: 5px;
+    &:focus {
+      outline: $blue_light auto 5px;
+    }
+  }
+}
+
 .too_small {
   display: none;
 }
@@ -99,7 +130,6 @@
       width: 100%;
     }
   }
-
 }
 @include breakpoint('hmd','max','height') { 
   .review {
