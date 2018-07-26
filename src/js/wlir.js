@@ -1,4 +1,4 @@
-var wlirAppCache        = "?1"; // increment this value if views are being cached
+var wlirAppCache        = "?2"; // increment this value if views are being cached
 var wlirApp             = angular.module("wlirApp",["ngRoute"]);
 var wlirAPI             = "/images/";
 
@@ -39,15 +39,17 @@ wlirApp.controller("wlirInit", ["$scope","$rootScope","$http","$location","$rout
           console.log("full response...");
           console.log(response);
 
-          // TODO: set current_image to response URL. (string)
-          // $scope.current_image = imageURL;
-          // TODO: set current_class to response classification. (string) {'0','1','2'} 
-          // $scope.current_class = imageClassification;
-          // TODO: set show_image to true
-          // $scope.show_image = true;
+          // Set current_id to response image id. (string)
+          $scope.current_id = response.data.imageId;
+          // Set current_image to response URL. (string)
+          $scope.current_image = response.data.imageLink;
+          // Set current_class to response classification. (string) {'Human','Animal','False Positives'} 
+          $scope.current_class = response.data.label;
+          // Set show_image to true to display the image and end the loading state.
+          $scope.show_image = true;
         }, 
         function errorCallback(response) {
-          // TODO: update to useful failure feedback
+          // TODO: remove console.log for production
           console.log("request url: " + response.config.url);
           console.log("status code: " + response.status);
           console.log("full response...");
@@ -75,7 +77,7 @@ wlirApp.controller("wlirInit", ["$scope","$rootScope","$http","$location","$rout
           //TODO: $scope.getNewImage();
         }, 
         function errorCallback(response) {
-          // TODO: update to useful failure feedback
+          // TODO: remove console.log for production
           console.log("request url: " + response.config.url);
           console.log("status code: " + response.status);
           console.log("full response...");
