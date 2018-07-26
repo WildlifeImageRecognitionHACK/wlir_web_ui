@@ -80,6 +80,7 @@ wlirApp.controller("wlirInit", ["$scope","$rootScope","$http","$location","$rout
       $http({
         method: "POST",
         url: wlirAPIs.post_label,
+        dataType: "json",
         data: $scope.postdata
       }).then(
         function successCallback(response) {
