@@ -2,26 +2,26 @@
   <div class="review__image">
     <img ng-show="show_image" ng-src="{{ current_image }}" />
   </div>
-  <div class="review__classification" ng-class="">
+  <div class="review__classification">
     <p class="review__classification--header">Classification</p>
     <ul>
       <li>
-        <input type="radio" name="image_classification" id="is_human" value="Human" ng-model="current_class" />
+        <input type="radio" name="image_classification" id="is_human" value="Human" ng-model="current_label" />
         <label for="is_human">Human</label>
       </li>
       <li>
-        <input type="radio" name="image_classification" id="is_animal" value="Animal" ng-model="current_class" />
+        <input type="radio" name="image_classification" id="is_animal" value="Animal" ng-model="current_label" />
         <label for="is_animal">Animal</label>
       </li>
       <li>
-        <input type="radio" name="image_classification" id="is_neither" value="False Positives" ng-model="current_class" />
+        <input type="radio" name="image_classification" id="is_neither" value="False Positive" ng-model="current_label" />
         <label for="is_neither">Neither</label>
       </li>
     </ul>
   </div>
   <div class="review__confirm">
     <p>Please do not share these images.<br />Doing so could put wild animals at risk.</p>
-    <button>Confirm</button>
+    <button ng-click="onConfirmClick()">Confirm</button>
   </div>
 </div>
 <div class="too_small">

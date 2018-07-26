@@ -1,7 +1,9 @@
 var wlirAppCache        = "?2"; // increment this value if views are being cached
 var wlirApp             = angular.module("wlirApp",["ngRoute"]);
-var wlirAPI             = "/images/";
-
+var wlirAPIs            = {
+                            "get_image" : "/images/",
+                            "post_label" : "/new_label/"
+                          }
 wlirApp.config(function($routeProvider,$locationProvider,$scope) {
     // This sets up the two views in the single page app for login (/) and image viewer (/review/)
     $routeProvider
@@ -32,7 +34,7 @@ wlirApp.controller("wlirInit", ["$scope","$rootScope","$http","$location","$rout
       // TODO: send OAUTH user token with the image request
       $http({
         method: "GET",
-        url: wlirAPI
+        url: wlirAPIs.get_image
       }).then(
         function successCallback(response) {
           // TODO: remove console.log for production
@@ -43,8 +45,9 @@ wlirApp.controller("wlirInit", ["$scope","$rootScope","$http","$location","$rout
           $scope.current_id = response.data.imageId;
           // Set current_image to response URL. (string)
           $scope.current_image = response.data.imageLink;
-          // Set current_class to response classification. (string) {'Human','Animal','False Positives'} 
-          $scope.current_class = response.data.label;
+          // Set current_class to response classification. (string) {'Human','Animal','False Positive'} 
+          $scope.current_label = response.data.imageLabel;
+          $scope.original_label = $scope.current_label;
           // Set show_image to true to display the image and end the loading state.
           $scope.show_image = true;
         }, 
@@ -59,22 +62,26 @@ wlirApp.controller("wlirInit", ["$scope","$rootScope","$http","$location","$rout
     };
 
     $scope.onGoogleSignIn = function () {
-      alert("hello world");
-      // TODO: attempt login
+      $location.path("/review/")
     };
 
     $scope.onConfirmClick = function () {
       // Sets the loading state.
       $scope.show_image = false;
-      $scope.current_class = "";
 
-      // TODO: send image ID and OAUTH user token in request
+      // Send image ID and OAUTH user token in request.
       $http({
         method: "POST",
-        url: wlirAPI
+        url: wlirAPIs.post_label,
+        data: { 
+          "imageId" : $scope.current_id,
+          "newLabel" :  $scope.current_label,
+          "originalLabel" :  $scope.original_label
+        }
       }).then(
         function successCallback(response) {
-          //TODO: $scope.getNewImage();
+          // If post is successful, automatically loads a new image
+          $scope.getNewImage();
         }, 
         function errorCallback(response) {
           // TODO: remove console.log for production
@@ -86,12 +93,16 @@ wlirApp.controller("wlirInit", ["$scope","$rootScope","$http","$location","$rout
       );
     }
 
-    // TODO: 
+    // TODO: Login Handling.
+
     // if (login == true) {
-    // $location.path("/#/review/");
-    $scope.getNewImage();
+    //   $location.path("/#/review/");
+    //   $scope.getNewImage();
     // } else {
-    // $location.path("/");
+    //   $location.path("/");
     // }
 
+    // Calls the image API once on load.
+    // TODO: Remove this after implementing Login Handling above.
+    $scope.getNewImage();
 }]);
